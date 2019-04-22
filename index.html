@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Calculator</title>
+	<style>
+
+			html {
+			  box-sizing: border-box;
+			}
+
+			body {
+			  margin: 20px;
+			}
+
+
+			input,
+			textarea,
+			button {
+			  border: #ADFF2F solid 0.4px;
+			  border-radius: 30%;
+			  background-color: transparent;
+			  font-size: inherit;
+			  font-family: inherit;
+			  font-weight: inherit;
+			  outline: none;
+			  appearance: none;
+			  text-align: left;
+			}
+
+			input:hover,
+			input:active,
+			input:focus,
+			textarea:hover,
+			textarea:active,
+			textarea:focus,
+			button:hover,
+			button:active,
+			button:focus {
+			  outline: one;
+			  background-color: #AFEEEE;
+			}
+
+			:root {
+			  font-family: Helvetica, Arial, sans-serif;
+			}
+
+			html {
+			  font-size: 130%;
+			  font-weight: 100px;
+			  line-height: 1.5;
+			}
+
+			body {
+			  align-items: center;
+			  background-image: linear-gradient(236deg, #9ACD32, #20B2AA);
+			  display: flex;
+			  height: 94.5vh;
+			  justify-content: center;
+			}
+
+			.container {
+			  max-width: 20em;
+			}
+
+			.container > p {
+			  text-align: center;
+			}
+
+			.calculator {
+			  border-radius: 0px;
+			  box-shadow: 0 0 90px 90px rgba(0, 0, 0, 0.15);
+			  margin-left: auto;
+			  margin-right: auto;
+			  margin-top: 2em;
+			  max-width: 15em;
+			  overflow: hidden;
+			}
+
+			.calculator__display {
+			  background-image: linear-gradient(to bottom, #66CDAA, #EE82EE);
+			  color: white;
+			  font-size: 1.8em;
+			  padding: 0.7em 0.9em;
+			  text-align: left;
+			}
+
+			.calculator__keys {
+			  background-image: linear-gradient(to top, #66CDAA, #EE82EE);
+			  display: grid;
+			  grid-gap: 3px;
+			  grid-template-columns: repeat(4, 1fr);
+			}
+
+			.calculator__keys > * {
+			  background-color: #E0FFFF;
+			  padding: 0.7em 1.28em;
+			  position: relative;
+			  text-align: center;
+			}
+
+			.calculator__keys > *:active::before,
+			.calculator__keys > .is-depressed::before {
+			  background-color: rgba(0, 0, 0, 0.5);
+			  bottom: 0;
+			  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5) inset;
+			  content: "";
+			  left: 0;
+			  opacity: 0.3;
+			  position: absolute;
+			  right: 0;
+			  top: 0;
+			  z-index: 1;
+			}
+
+			.key--operator {
+			  background-color: #FF1493;
+			}
+
+			.key--equal {
+			  background-image: linear-gradient(yellow, brown);
+			  background-image: linear-gradient(#FFFF00, #00FF7F);
+			  grid-column: 1 / span 4;
+			  grid-row: 5 / span 4;
+			}
+
+	</style>
+</head>
+<body>
+	<div class="container">
+
+    <div class="calculator">
+      <div class="calculator__display">0</div>
+
+      <div class="calculator__keys">
+        <button class="key--operator" data-action="add">+</button>
+        <button class="key--operator" data-action="subtract">-</button>
+        <button class="key--operator" data-action="multiply">&times;</button>
+        <button class="key--operator" data-action="divide">÷</button>
+        <button>1</button>
+        <button>2</button>
+        <button>3</button>
+        <button data-action="clear">AC</button>
+        <button>4</button>
+        <button>5</button>
+        <button>6</button>
+        <button data-action="decimal">.</button>
+        <button>7</button>
+        <button>8</button>
+        
+        <button>9</button>
+        <button>0</button>
+        
+        <button class="key--equal" data-action="calculate">=</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
