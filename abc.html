@@ -10,15 +10,51 @@
 			  box-sizing: border-box;
 			}
 
+			*,
+			*::before,
+			*::after {
+			  box-sizing: inherit;
+			}
+
 			body {
 			  margin: 20px;
+			}
+
+			
+			video {
+			  max-width: 100%;
+			}
+
+			
+			blockquote,
+			figure,
+			hr {
+			  margin: 20px;
+			  padding-right: 40px;
+			  padding-left: 0;
+			}
+
+			a {
+			  text-decoration: none;
+			}
+
+			a:focus {
+			  outline: none;
+			}
+
+			h6 {
+			  display: block;
+			}
+
+			ul {
+			  list-style: none;
 			}
 
 
 			input,
 			textarea,
-			button {
-			  border: #ADFF2F solid 0.4px;
+			alles {
+			  border: white solid 0.4px;
 			  border-radius: 30%;
 			  background-color: transparent;
 			  font-size: inherit;
@@ -35,9 +71,9 @@
 			textarea:hover,
 			textarea:active,
 			textarea:focus,
-			button:hover,
-			button:active,
-			button:focus { 
+			alles:hover,
+			alles:active,
+			alles:focus {
 			  outline: one;
 			  background-color: #AFEEEE;
 			}
@@ -60,11 +96,12 @@
 			  justify-content: center;
 			}
 
-			.container {
+			.main {
 			  max-width: 20em;
+			  box-shadow: 0 0 90px 90px rgba(0, 0, 0, 0.15);
 			}
 
-			.container > p {
+			.main > p {
 			  text-align: center;
 			}
 
@@ -78,30 +115,35 @@
 			  overflow: hidden;
 			}
 
-			.calculator__display {
+			.textview {
 			  background-image: linear-gradient(to bottom, #66CDAA, #EE82EE);
 			  color: white;
 			  font-size: 1.8em;
 			  padding: 0.7em 0.9em;
 			  text-align: left;
+			  border-radius: 0;
+			  border: none;
+			  width: 341px;
+			  height: 140px;
 			}
 
-			.calculator__keys {
+			.alles {
 			  background-image: linear-gradient(to top, #66CDAA, #EE82EE);
 			  display: grid;
 			  grid-gap: 3px;
 			  grid-template-columns: repeat(4, 1fr);
+			  cursor: pointer;
 			}
 
-			.calculator__keys > * {
+			.alles > * {
 			  background-color: #E0FFFF;
-			  padding: 0.7em 1.28em;
+			  padding: 0.9em 1.24em;
 			  position: relative;
 			  text-align: center;
 			}
 
-			.calculator__keys > *:active::before,
-			.calculator__keys > .is-depressed::before {
+			.alles > *:active::before,
+			.alles > .is-depressed::before {
 			  background-color: rgba(0, 0, 0, 0.5);
 			  bottom: 0;
 			  box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.5) inset;
@@ -114,7 +156,7 @@
 			  z-index: 1;
 			}
 
-			.key--operator {
+			.button {
 			  background-color: #FF1493;
 			}
 
@@ -126,35 +168,57 @@
 			}
 
 	</style>
+
+
+
+	<script>
+		function insert(num){
+			document.form.textview.value=document.form.textview.value+num
+		}
+
+		function equal(){
+			var exp=document.form.textview.value;
+			if(exp){
+				document.form.textview.value=eval(exp)
+			}
+		}
+
+		function clean(){
+			document.form.textview.value="";
+		}
+
+	</script>
+
+
+
 </head>
 <body>
-	<div class="container">
+	<div class="main">
+		<form name="form">
+			<input class="textview" name="textview">
+		</form>
 
-    <div class="calculator">
-      <div class="calculator__display">0</div>
+		<div class="alles">
+						<input class="button" type="button" value="+" onclick="insert('+')">
+						<input class="button" type="button" value="-" onclick="insert('-')">
+						<input class="button" type="button" value="*" onclick="insert('*')">
+						<input class="button" type="button" value="÷" onclick="insert('÷')">
+						<input class="button1" type="button" value="1" onclick="insert(1)">
+						<input class="button1" type="button" value="2" onclick="insert(2)">
+						<input class="button1" type="button" value="3" onclick="insert(3)">
+						<input class="button1" type="button" value="AC" onclick="clean()">
 
-      <div class="calculator__keys">
-        <button class="key--operator" data-action="add">+</button>
-        <button class="key--operator" data-action="subtract">-</button>
-        <button class="key--operator" data-action="multiply">&times;</button>
-        <button class="key--operator" data-action="divide">÷</button>
-        <button>1</button>
-        <button>2</button>
-        <button>3</button>
-        <button data-action="clear">AC</button>
-        <button>4</button>
-        <button>5</button>
-        <button>6</button>
-        <button data-action="decimal">.</button>
-        <button>7</button>
-        <button>8</button>
+						<input class="button1" type="button" value="4" onclick="insert(4)">
+						<input class="button1" type="button" value="5" onclick="insert(5)">
+						<input class="button1" type="button" value="6" onclick="insert(6)">
+						<input class="button1" type="button" value="9" onclick="insert(9)">
+						<input class="button1" type="button" value="7" onclick="insert(7)">
+						<input class="button1" type="button" value="8" onclick="insert(8)">
+						<input class="button1" type="button" value="0" onclick="insert(0)">
+						<input class="button1" type="button" value="." onclick="insert('.')">
         
-        <button>9</button>
-        <button>0</button>
-        
-        <button class="key--equal" data-action="calculate">=</button>
-      </div>
-    </div>
-  </div>
+						<input class="key--equal" type="button" value="=" onclick="equal()">
+		</div>
+	</div>
 </body>
 </html>
